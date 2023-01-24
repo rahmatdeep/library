@@ -5,21 +5,23 @@ const form = document.getElementById("form");
 const deleteButton = document.getElementById('deleteButton');
 const errorDisplay = document.querySelector('.error');
 const formSubmit = document.getElementById('formsubmit');
-
+const readsel = document.getElementById('read');
+const notReadsel = document.getElementById('notread');
 
 //storage
 let booksInLibrary = [];
 
 //sample data
-let a = new bookTemplate('Silent Patient', 'Alex', 300)
+let a = new bookTemplate('Silent Patient', 'Alex', 300, "read")
 booksInLibrary.push(a);
 displayArray(booksInLibrary);
 //Functions
 
-function bookTemplate(title, author, pages){
+function bookTemplate(title, author, pages, read){
     this.title = title
     this.author = author
     this.pages = pages
+    this.read = read
 };
 
 
@@ -30,13 +32,23 @@ const addBookToLibrary = function(event){
     let pagesVal = document.getElementById('pages').value
 
     if(!(titleVal===''||authorVal===''||pagesVal==='')){
-    let nb = new bookTemplate(titleVal, authorVal, pagesVal);
-    booksInLibrary.push(nb);
-    formSubmit.setAttribute("data-bs-dismiss","modal")
-    formSubmit.click();
-    (()=>{
-        formSubmit.setAttribute("data-bs-dismiss","")
-    })()
+        if(readsel.checked==true){
+            let nb = new bookTemplate(titleVal, authorVal, pagesVal, "Read");
+            booksInLibrary.push(nb);
+            formSubmit.setAttribute("data-bs-dismiss","modal")
+            formSubmit.click();
+            (()=>{
+                formSubmit.setAttribute("data-bs-dismiss","")
+            })()}
+        else if(notReadsel.checked==true){
+            let nb = new bookTemplate(titleVal, authorVal, pagesVal, "not Read");
+            booksInLibrary.push(nb);
+            formSubmit.setAttribute("data-bs-dismiss","modal")
+            formSubmit.click();
+            (()=>{
+                formSubmit.setAttribute("data-bs-dismiss","")
+            })()
+        }
 }
     else{
         errorDisplay.textContent='Form Cannot be Empty'
@@ -58,7 +70,7 @@ function displayArray(Arr){
             let newBook = document.createElement('div');
             newBook.classList.add('book');
             newBook.dataset.index = i;
-            newBook.innerHTML = `<p><span>${Arr[i].title}</span> by <span>${Arr[i].author}</span> has <span>${Arr[i].pages}</span> pages </p><div class="right"><i onClick = "deleteElement(this)" class="fa-solid fa-trash"></i><i data-bs-toggle="modal" data-bs-target="#form" onClick="editElement(this)" class="fa-sharp fa-solid fa-pen-to-square"></i></div>`;
+            newBook.innerHTML = `<p><span>${Arr[i].title}</span> by <span>${Arr[i].author}</span> has <span>${Arr[i].pages}</span> pages is ${Arr[i].read} </p><div class="right"><i onClick = "deleteElement(this)" class="fa-solid fa-trash"></i><i data-bs-toggle="modal" data-bs-target="#form" onClick="editElement(this)" class="fa-sharp fa-solid fa-pen-to-square"></i></div>`;
             container.appendChild(newBook);
         };
 };
