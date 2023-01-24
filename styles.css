@@ -1,0 +1,135 @@
+/*{
+    border: 1px solid red;
+}*/
+
+body{
+    display: grid;
+    font-family: sans-serif;
+    grid-template-rows: 1fr 10fr;
+    height: 100vh;
+    width: 100vw;
+    
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #FFF2F2;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    
+}
+
+.header>h1{
+    font-size: 40px;
+}
+
+.add{
+    /*background-color: #E5E0FF;
+    padding: 5px 10px;
+    border-radius: 8px;*/
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 3px;
+    width: 200px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    background:
+    linear-gradient(
+      to right,
+      rgba(100, 200, 200, 1),
+      rgba(100, 200, 200, 1)
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 0, 0, 1),
+      rgba(255, 0, 180, 1),
+      rgba(0, 100, 200, 1)
+  );
+  background-size: 100% 3px, 0 3px;
+  background-position: 100% 100%, 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 400ms;
+}
+
+.add:hover{
+    background-size: 0 3px, 100% 3px;
+}
+
+.add>i{
+    background-color: #8EA7E9;
+    padding: 4px;
+    border-radius: 4px;
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+div.book{
+    display: flex;
+    justify-content: space-between;
+}
+
+.books{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    background-color: #FFFFE8;
+}
+
+.books>.container{
+    width: 50%;
+    height: 80%;
+    
+    
+    overflow-y: scroll;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    padding: 10px;
+}
+.container::-webkit-scrollbar{
+    width: 0;
+}
+.book{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #CDE990;
+    padding: 5px 20px;
+    height: 10%;
+    margin-bottom:10px ;
+   /* transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+*/
+}
+.book:hover{
+    /*box-shadow: inset 1000px 0 0 0 #54b3d6;
+    color: antiquewhite;*/
+}
+.book>p{
+    margin-bottom: 0;
+}
+.book>.right{
+    display: flex;
+    gap: 10px;
+}
+
+.right>i{
+    background-color: #AACB73;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.error{
+    color: red;
+}
